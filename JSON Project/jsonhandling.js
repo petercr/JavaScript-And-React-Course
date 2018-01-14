@@ -1,3 +1,5 @@
+let followersURL, followersData;
+
 fetch('https://api.github.com/users/petercr')
     .then(function(r) {
         return r.json();
@@ -10,6 +12,16 @@ fetch('https://api.github.com/users/petercr')
         newStuff.innerHTML += "Location: " + j.location + "</br>";
         newStuff.innerHTML += "Bio: " + j.bio + "</br>";
         newStuff.innerHTML += "Number of followers: " + j.followers + "</br>";
-        console.log(j.followers_url);
+        followersURL = j.followers_url;
+        console.log(followersURL);
 
-    })
+
+    }) // end of the first GitHub fetch request
+
+    fetch("https://api.github.com/users/petercr/followers")
+      .then( function(r) {
+        return r.json;
+      })
+      .then( function(r) {
+        console.log(r);
+      })
