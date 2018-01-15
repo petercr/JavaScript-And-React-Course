@@ -1,6 +1,14 @@
-let followersURL, followersData;
+var followers, searchData;
 
-fetch('https://api.github.com/users/petercr')
+document.getElementById("button").addEventListener("click", function (r) {
+  getUser(document.getElementById("GitUser").value) ;
+  
+})
+
+function getUser (user) {
+
+
+fetch('https://api.github.com/users/' + user)
     .then(function(r) {
         return r.json();
     })
@@ -12,16 +20,18 @@ fetch('https://api.github.com/users/petercr')
         newStuff.innerHTML += "Location: " + j.location + "</br>";
         newStuff.innerHTML += "Bio: " + j.bio + "</br>";
         newStuff.innerHTML += "Number of followers: " + j.followers + "</br>";
-        followersURL = j.followers_url;
-        console.log(followersURL);
+        followers = j.followers_url;
+        console.log(followers);
 
 
     }) // end of the first GitHub fetch request
+  } // end of getUser
 
-    fetch("https://api.github.com/users/petercr/followers")
-      .then( function(r) {
-        return r.json;
-      })
-      .then( function(r) {
-        console.log(r);
-      })
+
+    // fetch("https://api.github.com/users/petercr/followers")
+    //   .then( function(r) {
+    //     return r.json;
+    //   })
+    //   .then( function(r) {
+    //     console.log(r);
+    //   })
