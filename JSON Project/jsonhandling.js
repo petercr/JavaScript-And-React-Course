@@ -1,4 +1,5 @@
-var followers, searchData;
+var followers = null;
+var searchData = null;
 
 document.getElementById("button").addEventListener("click", function(r) {
     getUser(document.getElementById("GitUser").value);
@@ -6,7 +7,7 @@ document.getElementById("button").addEventListener("click", function(r) {
 })
 
 function getUser(user) {
-
+     var followers;
 
     fetch('https://api.github.com/users/' + user)
         .then(function(r) {
@@ -20,7 +21,7 @@ function getUser(user) {
             newStuff.innerHTML += "Location: " + j.location + "</br>";
             newStuff.innerHTML += "Bio: " + j.bio + "</br>";
             newStuff.innerHTML += "Number of followers: " + j.followers + "</br>";
-            followers = j;
+            followers = j.followers_url;
             console.log(followers);
 
 
@@ -28,7 +29,7 @@ function getUser(user) {
 
 
 
-    fetch(`https://api.github.com/users/${user}/followers`)
+    fetch(followers)
         .then(function(x) {
             return x.json;
         })
