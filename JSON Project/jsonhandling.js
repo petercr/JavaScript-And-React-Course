@@ -7,7 +7,7 @@ document.getElementById("button").addEventListener("click", function(r) {
 })
 
 function getUser(user) {
-     var followers;
+
 
     fetch('https://api.github.com/users/' + user)
         .then(function(r) {
@@ -23,10 +23,13 @@ function getUser(user) {
             newStuff.innerHTML += "Number of followers: " + j.followers + "</br>";
             followers = j.followers_url;
             console.log(followers);
+            getFollowers(j.followers_url);
 
 
         }) // end of the first GitHub fetch request
+} // end of getUser
 
+function getFollowers (followers) {
 
 
     fetch(followers)
@@ -36,5 +39,4 @@ function getUser(user) {
         .then(function(y) {
             console.log(y);
         })
-
-} // end of getUser
+}
