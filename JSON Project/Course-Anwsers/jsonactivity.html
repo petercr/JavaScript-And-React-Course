@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON GitHub Activity</title>
+  <style>
+    .container {
+      text-align: center;
+    }
+    img {
+      margin: 5px;
+      width: 20px;
+    }
+    #avatar {
+      width: 150px;
+    }
+    ul {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>GitHub Profile Hunt</h1>
+
+    <h3 id="loader">Loading...</h3>
+    <div><img id="avatar" src="" /></div>
+    <div id="name"></div>
+    <div id="username"></div>
+    <div id="location"></div>
+    <div id="bio"></div>
+    <div>
+      <div id="count"></div>
+      <ul id="list">
+      </ul>
+    </div>
+    <input type="text" placeholder="GitHub username">
+    <button>Get GitHub Profile</button>
+  </div>
+  <script src="jsonhandling.js"></script>
+</body>
+</html>
