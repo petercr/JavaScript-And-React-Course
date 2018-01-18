@@ -15,28 +15,44 @@ function getUser(user) {
         })
         .then(function(j) {
             console.dir(j);
-            var newStuff = document.getElementById('username');
-            document.getElementById("image").src = j.avatar_url;
-            newStuff.innerHTML += "Real Name: " + j.name + "</br>";
-            newStuff.innerHTML += "Location: " + j.location + "</br>";
-            newStuff.innerHTML += "Bio: " + j.bio + "</br>";
-            newStuff.innerHTML += "Number of followers: " + j.followers + "</br>";
-            followers = j.followers_url;
-            console.log(followers);
+
+            appendToBody(j);
             getFollowers(j.followers_url);
 
 
         }) // end of the first GitHub fetch request
 } // end of getUser
 
-function getFollowers (followers) {
+function appendToBody(data) {
+    document.getElementById("loader").style = "display: none";
+    var newStuff = document.getElementById('username');
+    document.getElementById("image").src = data.avatar_url;
+    newStuff.innerHTML += "Real Name: " + data.name + "</br>";
+    newStuff.innerHTML += "Location: " + data.location + "</br>";
+    newStuff.innerHTML += "Bio: " + data.bio + "</br>";
+    newStuff.innerHTML += "Number of followers: " + data.followers + "</br>";
+}
 
 
-    fetch(followers)
+function getFollowers(url) {
+
+
+    fetch(url)
         .then(function(x) {
-            return x.json;
+            return x.json();
         })
         .then(function(y) {
-            console.log(y);
+            followers = y;
+            listFollowers();
         })
+}
+
+function listFollowers() {
+    followers.forEach(function(f) {
+        var li = document.createElement('li');
+        li.innerHTML = '<a href="' + f.html_url + '">' +
+            '<img src="' + f.avatar_url + '" alt="' + f.login + '"/>' +
+            '</a>';
+        document.getElementById('followers-list').appendChild(li);
+    });
 }
