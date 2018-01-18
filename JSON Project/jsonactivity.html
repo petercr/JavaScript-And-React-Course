@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>JSON GitHub Activity</title>
-  <link rel="stylesheet" href="style.css">
+    <title>JSON GitHub Activity</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="container">
-    <h1>GitHub Avatar and Info</h1>
-    <h3>Loading ....</h3>
-    <input type="text" name="GitHub Username" id="GitUser">
-    <button onclick="getUser" id="button">Search For GitHub User</button>
-    <img src="" alt="Users Avitar" id="image" height="20%" width="20%">
-    <div id="username"></div>
-    <!-- add in more divs to append to for the return data. Block scoping takes care of the <br> -->
-    <ul id="followers"></ul> <!-- <ul> list to hold the follwers icons and info -->
-  </div>
-  <script src="jsonhandling.js"></script>
+    <div class="container">
+        <h1>GitHub Avatar and Info</h1>
+        <h3 id="loader">Loading ....</h3>
+        <input type="text" name="GitHub Username" id="GitUser">
+        <button onclick="getUser" id="button">Search For GitHub User</button>
+        <img src="" alt="Users Avitar" id="image" height="20%" width="20%">
+        <div id="username"></div>
+        <!-- add in more divs to append to for the return data. Block scoping takes care of the <br> -->
+        <ul id="followers-list"></ul>
+        <!-- <ul> list to hold the follwers icons and info -->
+    </div>
+    <script src="jsonhandling.js"></script>
 </body>
+
 </html>
