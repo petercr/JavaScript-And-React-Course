@@ -1,0 +1,11 @@
+#showcase {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+}
+
+.btn {
+    margin-bottom: 25px;
+}
