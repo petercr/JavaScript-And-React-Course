@@ -13,6 +13,7 @@ Promises
 * Use a default value for when a user doesn't input
 anything in the search box
 * Use template strings to display all the text on the
+* __Extra Story__ Try to use arrow functions in the project
 
 #### These links were giving by the course to help with the project
 
