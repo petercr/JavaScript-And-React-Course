@@ -11,5 +11,10 @@ function getSearchData(searchString) {
         })
         .then(res => {
             console.dir(res);
+            // for loop to create 10 new image cards and append to #searchResults
+            for (let i = 0; i > 10; i++) {
+                let temp = document.createElement("img");
+                document.getElementById("testImg").src = res.collection.items["0"].links["0"].href;
+            } //
         })
 }
