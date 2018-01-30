@@ -11,21 +11,26 @@ function getSearchData(searchString) {
         })
         .then(res => {
             console.dir(res);
+
+            let url = res.collection.items[2].links["0"].href; // get the url of the image
+            let description = res.collection.items[1].data["0"].description; // get the description of the image
+            console.log(url + ' \\n' + description);
+
             // document.getElementById("testImg").src = res.collection.items["0"].links["0"].href;
             // for loop to create 10 new image cards and append to #searchResults
-            
-                // just create a template literal and add it to .innerHTML of the div
-                let nasaImages = document.createElement("img");
-                nasaImages.src = res.collection.items["0"].links["0"].href;
-                nasaImages.alt = res.collection.items["0"].data["0"]
-                document.getElementById("searchResults").appendChild(nasaImages);
-                let nasa = document.createElement("img");
-                nasa.src = res.collection.items["1"].links["0"].href;
-                document.getElementById("searchResults").appendChild(nasa);
-                // let temp = document.createElement("img");
-                // temp.src = res.collection.items[i].links["0"].href;
-                // document.getElementById("searchResults").innerHTML += temp;
-                
-            
+
+            // just create a template literal and add it to .innerHTML of the div
+            let nasaImages = document.createElement("img");
+            nasaImages.src = res.collection.items["0"].links["0"].href;
+            nasaImages.alt = res.collection.items["0"].data["0"]
+            document.getElementById("searchResults").appendChild(nasaImages);
+            let nasa = document.createElement("img");
+            nasa.src = res.collection.items[1].links["0"].href;
+            document.getElementById("searchResults").appendChild(nasa);
+            // let temp = document.createElement("img");
+            // temp.src = res.collection.items[i].links["0"].href;
+            // document.getElementById("searchResults").innerHTML += temp;
+
+
         })
 }
