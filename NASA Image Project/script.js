@@ -5,16 +5,27 @@ document.querySelector(".btn").addEventListener("click", function() {
 })
 
 function getSearchData(searchString) {
-    fetch("https://images-api.nasa.gov/search?q=moon")
+    fetch("https://images-api.nasa.gov/search?q=" + searchString)
         .then(req => {
             return req.json();
         })
         .then(res => {
             console.dir(res);
+            // document.getElementById("testImg").src = res.collection.items["0"].links["0"].href;
             // for loop to create 10 new image cards and append to #searchResults
-            for (let i = 0; i > 10; i++) {
-                let temp = document.createElement("img");
-                document.getElementById("testImg").src = res.collection.items["0"].links["0"].href;
-            } //
+            
+                // just create a template literal and add it to .innerHTML of the div
+                let nasaImages = document.createElement("img");
+                nasaImages.src = res.collection.items["0"].links["0"].href;
+                nasaImages.alt = res.collection.items["0"].data["0"]
+                document.getElementById("searchResults").appendChild(nasaImages);
+                let nasa = document.createElement("img");
+                nasa.src = res.collection.items["1"].links["0"].href;
+                document.getElementById("searchResults").appendChild(nasa);
+                // let temp = document.createElement("img");
+                // temp.src = res.collection.items[i].links["0"].href;
+                // document.getElementById("searchResults").innerHTML += temp;
+                
+            
         })
 }
