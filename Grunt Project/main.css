@@ -1,0 +1,23 @@
+body {
+  background: lightblue;
+  font-family: 'Arial', sans-serif;
+}
+
+h1, #counter {
+  text-align: center;
+}
+
+.t-container {
+  text-align: center;
+}
+
+#tomato {
+  width: 400px;
+  height: 400px;
+  transition: width .5s, height .5s;
+}
+
+#tomato:active {
+  width: 380px;
+  height: 380px;
+}
