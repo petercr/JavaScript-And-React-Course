@@ -4,6 +4,13 @@ document.querySelector(".btn").addEventListener("click", function() {
     getSearchData(search);
 })
 
+document.getElementById("searchText").addEventListener("keydown", function (e) {
+    if (13 == e.keyCode) {
+        let search = document.getElementById("searchText").value;
+        getSearchData(search);  
+    }
+})
+
 function getSearchData(searchString) {
     fetch("https://images-api.nasa.gov/search?q=" + searchString + "&media_type=image")
         .then(req => {
@@ -20,10 +27,15 @@ function getSearchData(searchString) {
             // for loop to create 10 new image cards and append to #searchResults
 
             // just create a template literal and add it to .innerHTML of the div
-            let nasaImages = document.createElement("img");
-            nasaImages.src = res.collection.items["0"].links["0"].href;
-            nasaImages.alt = res.collection.items["0"].data["0"]
-            document.getElementById("searchResults").appendChild(nasaImages);
+            for (var i = 0; i < 10; i++) {
+                let nasaImages = document.createElement("img");
+                nasaImages.src = res.collection.items[i].links["0"].href;
+                nasaImages.alt = res.collection.items[i].data["0"];
+                document.getElementById("searchResults").appendChild(nasaImages);
+            }
+            
+            
+            
             let nasa = document.createElement("img");
             nasa.src = res.collection.items[1].links["0"].href;
             document.getElementById("searchResults").appendChild(nasa);
