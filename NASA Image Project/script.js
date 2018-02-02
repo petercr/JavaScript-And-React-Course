@@ -5,7 +5,7 @@ document.querySelector(".btn").addEventListener("click", function() {
 })
 
 function getSearchData(searchString) {
-    fetch("https://images-api.nasa.gov/search?q=" + searchString)
+    fetch("https://images-api.nasa.gov/search?q=" + searchString + "&media_type=image")
         .then(req => {
             return req.json();
         })
@@ -14,7 +14,7 @@ function getSearchData(searchString) {
 
             let url = res.collection.items[2].links["0"].href; // get the url of the image
             let description = res.collection.items[1].data["0"].description; // get the description of the image
-            console.log(url + ' \\n' + description);
+            console.log(url + "\n" + description);
 
             // document.getElementById("testImg").src = res.collection.items["0"].links["0"].href;
             // for loop to create 10 new image cards and append to #searchResults
@@ -27,9 +27,7 @@ function getSearchData(searchString) {
             let nasa = document.createElement("img");
             nasa.src = res.collection.items[1].links["0"].href;
             document.getElementById("searchResults").appendChild(nasa);
-            // let temp = document.createElement("img");
-            // temp.src = res.collection.items[i].links["0"].href;
-            // document.getElementById("searchResults").innerHTML += temp;
+            
 
 
         })
