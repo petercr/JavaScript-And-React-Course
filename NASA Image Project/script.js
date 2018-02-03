@@ -23,22 +23,27 @@ function getSearchData(searchString) {
             let description = res.collection.items[1].data["0"].description; // get the description of the image
             console.log(url + "\n" + description);
 
-            // document.getElementById("testImg").src = res.collection.items["0"].links["0"].href;
+            
             // for loop to create 10 new image cards and append to #searchResults
 
             // just create a template literal and add it to .innerHTML of the div
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 12; i++) {
+                let pictureBio = document.createElement("p");
+                pictureBio.innerHTML = res.collection.items[i].data["0"].description_508;
+                
                 let nasaImages = document.createElement("img");
                 nasaImages.src = res.collection.items[i].links["0"].href;
-                nasaImages.alt = res.collection.items[i].data["0"];
+                
+
+                document.getElementById("searchResults").appendChild(pictureBio);
                 document.getElementById("searchResults").appendChild(nasaImages);
             }
             
             
             
-            let nasa = document.createElement("img");
-            nasa.src = res.collection.items[1].links["0"].href;
-            document.getElementById("searchResults").appendChild(nasa);
+            // let nasa = document.createElement("img");
+            // nasa.src = res.collection.items[1].links["0"].href;
+            // document.getElementById("searchResults").appendChild(nasa);
             
 
 
