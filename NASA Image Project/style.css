@@ -25,3 +25,11 @@ img {
     /* display: none; */
     background:  rgb(179, 159, 159);
 }
+
+.bio:hover {
+    display: flex;
+}
+
+.bio:focus {
+    display: flex;
+}
