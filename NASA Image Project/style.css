@@ -20,3 +20,8 @@ img {
     max-height: 40%;
     max-width: 60%;
 }
+
+.bio {
+    /* display: none; */
+    background:  rgb(179, 159, 159);
+}
