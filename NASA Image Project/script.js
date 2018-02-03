@@ -29,7 +29,9 @@ function getSearchData(searchString) {
             // just create a template literal and add it to .innerHTML of the div
             for (var i = 0; i < 12; i++) {
                 let pictureBio = document.createElement("p");
+                pictureBio.classList.add("bio");
                 pictureBio.innerHTML = `A picture of: ${res.collection.items[i].data["0"].description_508}`;
+               
                 
                 let nasaImages = document.createElement("img");
                 nasaImages.src = res.collection.items[i].links["0"].href;
@@ -48,4 +50,4 @@ function getSearchData(searchString) {
 
 
         })
-}
+} // end of getSearchData
