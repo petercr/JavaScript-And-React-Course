@@ -6,6 +6,10 @@
     flex-grow: 0;
 }
 
+#loading {
+    display: none;
+}
+
 .btn {
     margin-bottom: 25px;
 }
@@ -13,6 +17,6 @@
 img {
     padding-left: 20px;
     padding-right: 20px;
-    height: 200px;
-    width: 200px
+    max-height: 40%;
+    max-width: 60%;
 }
