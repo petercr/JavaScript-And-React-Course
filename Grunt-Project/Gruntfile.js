@@ -1,3 +1,5 @@
+// require('load-grunt-tasks')(grunt);
+
 module.exports = function(grunt) {
 
     grunt.initConfig({
@@ -5,6 +7,18 @@ module.exports = function(grunt) {
         watch: {
             files: ["*.js", "*.css"],
             task: "updated"
+        },
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['env']
+            },
+            dist: {
+                files: {
+                    'index.js': '/src/index.js',
+                    'logger.js': '/src/logger.js'
+                }
+            }
         },
         uglify: {
             build: {
@@ -17,14 +31,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
-
+    grunt.loadNpmTasks('babel-cli');
 
     grunt.registerTask("updated", () => {
         grunt.log.writeln(`Yah it updated baby!! ;-)`);
     });
 
-    grunt.registerTask("default", () => {
-        grunt.log.writeln(`Where are you ${grunt.config.get("name")} ???`);
-    });
+    // grunt.registerTask("default", ['babel']);
 
 };
