@@ -1,6 +1,6 @@
-var gulp = require('gulp');
-var handlebars = require('gulp-compile-handlebars');
-var rename = require('gulp-rename');
+const gulp = require('gulp');
+const handlebars = require('gulp-compile-handlebars');
+const rename = require('gulp-rename');
 
 gulp.task('default', () => {
     console.log('Hello Rufus ;-0');
