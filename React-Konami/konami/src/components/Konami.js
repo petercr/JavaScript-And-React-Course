@@ -20,7 +20,7 @@ class Konami extends Component {
     }
 
     render() {
-        return ( < div > Welcome to my Craxy React App < /div>
+        return ( < div > Welcome to my Crazy React App < /div >
 
         );
     }
