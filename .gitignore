@@ -1,3 +1,4 @@
 /.vscode/
 /Grunt-Project/node_modules/ 
 /Gulp-Project/node_modules/
+/notezy/node_modules/
