@@ -1,9 +1,30 @@
 #showcase {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    
     flex-grow: 0;
+    
+}
+
+.mainPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 15px;
+}
+
+
+
+.searchHistory {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* position: fixed; */
+    width: 20%;
+    height: 80vh;
+    background: blue;
 }
 
 #loading {
