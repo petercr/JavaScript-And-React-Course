@@ -4,6 +4,7 @@ document.querySelector(".btn").addEventListener("click", function() {
     getSearchData(search);
 })
 
+// add event listener for the return key to get search value and search
 document.getElementById("searchText").addEventListener("keydown", function (e) {
     if (13 == e.keyCode) {
         let search = document.getElementById("searchText").value;
@@ -35,7 +36,7 @@ function getSearchData(searchString) {
 
                 let pictureBio = document.createElement("p");
                 pictureBio.classList.add("bio");
-                pictureBio.innerHTML = `A picture of: ${res.collection.items[i].data["0"].description_508}`;
+                pictureBio.innerHTML = `A picture of: ${description_508}`;
 
 
                 let nasaImages = document.createElement("img");
@@ -47,10 +48,6 @@ function getSearchData(searchString) {
             }
 
 
-
-            // let nasa = document.createElement("img");
-            // nasa.src = res.collection.items[1].links["0"].href;
-            // document.getElementById("searchResults").appendChild(nasa);
 
 
 
