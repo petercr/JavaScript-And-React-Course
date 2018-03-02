@@ -1,3 +1,5 @@
+let searchNumber = 0;
+
 // add event listen for the button and assign the text box value to a variable
 document.querySelector(".btn").addEventListener("click", function() {
     let search = document.getElementById("searchText").value;
@@ -8,9 +10,21 @@ document.querySelector(".btn").addEventListener("click", function() {
 document.getElementById("searchText").addEventListener("keydown", function (e) {
     if (13 == e.keyCode) {
         let search = document.getElementById("searchText").value;
+        let newItem = document.getElementById("history");
+        searchNumber += 1;
+        localStorage.setItem(searchNumber, search);
+        let addToList = document.createElement('li');
+        addToList.innerText = search;
+        console.log(addToList);
+        newItem.appendChild(addToList);
         getSearchData(search);
     }
 })
+
+if (localStorage.getItem('1')) {
+    console.log(localStorage.getItem('1'));
+}
+
 
 function getSearchData(searchString) {
     fetch("https://images-api.nasa.gov/search?q=" + searchString + "&media_type=image")
@@ -25,7 +39,7 @@ function getSearchData(searchString) {
             console.log(url + "\n" + description);
 
 
-            // for loop to create 10 new image cards and append to #searchResults
+            // for loop to create 13 new image cards and append to #searchResults
 
             // just create a template literal and add it to .innerHTML of the div
             for (var i = 1; i < 13; i++) {
