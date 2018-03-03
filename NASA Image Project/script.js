@@ -32,7 +32,7 @@ function getSearchData(searchString) {
             return req.json();
         })
         .then(res => {
-            console.dir(res);
+            // console.dir(res);
 
             let url = res.collection.items[2].links["0"].href; // get the url of the image
             let description = res.collection.items[1].data["0"].description; // get the description of the image
@@ -45,7 +45,7 @@ function getSearchData(searchString) {
             for (var i = 1; i < 13; i++) {
                 let { href } = res.collection.items[i].links["0"];
                 let { description_508 } = res.collection.items[i].data["0"];
-                console.log(href + ' ' + description_508);
+                // console.log(href + ' ' + description_508);
 
 
                 let pictureBio = document.createElement("p");
