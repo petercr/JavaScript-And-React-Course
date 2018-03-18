@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Mousetrap from 'mousetrap';
 
 class Konami extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.popUp = this.popUp.bind(this);
     }
 
     componentDidMount() {
@@ -16,7 +17,7 @@ class Konami extends Component {
     }
 
     popUp() {
-        alert('It worked buddy ;-)');
+        alert(`You put in the Konami Code ${this.props.name.length > 1 ? `, ${this.props.name}!` : `!`}`);
     }
 
     render() {
