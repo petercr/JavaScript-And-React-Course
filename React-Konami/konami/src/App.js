@@ -36,15 +36,15 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome`{this.state.name}` </h1>
+          <h1 className="App-title">Welcome{this.state.name.length > 1 ? `, ${this.state.name}` : ``}</h1>
         </header>
         
         <input type="text" onChange={ this.handleChange} placeholder="Your name" />
 
         <div className="konami">
           <button onClick={this.toggleActivation}>Toggle Konami Code</button>
-          {this.state.activated ? <Konami name={this.state.name} /> : <div>Konami Code: Deactivated </div> }
-        
+          {this.state.activated ? <Konami name={this.state.name} /> : <div>Konami Code: Deactivated</div> }
+        </div>
       </div>
     );
   }
