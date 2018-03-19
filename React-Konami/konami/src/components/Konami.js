@@ -17,11 +17,14 @@ class Konami extends Component {
     }
 
     popUp() {
-        alert(`You put in the Konami Code ${this.props.name.length > 1 ? `, ${this.props.name}!` : `!`}`);
+        alert(`You put in the Konami Code ${this.props.name.length > 1 ? `,  ${this.props.name}!` : `!`}`);
     }
 
     render() {
-        return ( < div > Welcome to my Crazy React App < /div >
+        return ( 
+            <div>
+                Konami Code: Activated
+            </div>
 
         );
     }
