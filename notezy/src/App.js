@@ -8,10 +8,11 @@ class App extends Component {
   constructor(){
     super();
     const indexKey = 'markdown';
-    const notes = JSON.parse(localStorage(notes));
+    const savedNotes = JSON.parse(localStorage.getItem(notes));
 
     this.state = {
-      savedNotes: notes,
+      notes: savedNotes ? savedNotes : [],
+      currentNote: ''
     }
 
   }
