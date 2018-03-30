@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   updateNote(body) {
-    let notes =this.state.notes;
+    let notes = this.state.notes;
     let currentNote = this.state.selectedNote;
     currentNote.body = body;
     this.setState({selectedNote: currentNote});
