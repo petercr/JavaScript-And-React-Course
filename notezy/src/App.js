@@ -17,6 +17,11 @@ class App extends Component {
     }
 
     this.noteID = this.noteID.bind(this);
+    this.addNote = this.addNote.bind(this);
+    this.save = this.save.bind(this);
+    this.selectNote = this.selectNote.bind(this);
+    this.updateNote = this.updateNote.bind(this);
+
   }
 
   noteID() {
