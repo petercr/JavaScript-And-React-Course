@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import 'milligram';
-const uuidv1 = require('uuid/v1');
-
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
+
+const uuidv1 = require('uuid/v1');
+
 
 class App extends Component {
   constructor(){
     super();
     const indexKey = 'markdown';
-    const savedNotes = JSON.parse(localStorage.getItem(notes));
+    const savedNotes = JSON.parse(localStorage.getItem(indexKey));
 
     this.state = {
       notes: savedNotes ? savedNotes : [],
@@ -29,6 +30,7 @@ class App extends Component {
   }
 
   addNote() {
+    console.log('test ');
     const newID = this.noteID();
     const note = {id: newID, body: `What's going on today?`};
     const newNote = this.state.notes;
@@ -54,7 +56,7 @@ class App extends Component {
   updateNote(body) {
     let notes = this.state.notes;
     let currentNote = this.state.currentNote;
-    currentNote.body = body;
+    currentNote = body;
     this.setState({savedNotes: currentNote});
 
     // loop through the notes to find the index of it
@@ -63,7 +65,7 @@ class App extends Component {
     });
 
     // sets mde body to the selected note
-    notes[index].body = currentNote.body;
+    notes[locationOfNote] = currentNote;
 
     this.setState({notes: notes});
 
