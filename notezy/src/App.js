@@ -38,21 +38,37 @@ class App extends Component {
   }
 
   selectNote(note) {
-    if (note === this.state.selectedNote) return;
-    this.setState({selectedNote: note});
+    if (note === this.state.currentNote) return;
+    this.setState({savedNotes: note});
   }
 
   save(notes) {
+    // if there's no notes then exit func
     if (!notes) return;
+
+    //else use key to parse notes to localStorage
     const key = 'markdown';
     localStorage.setItem(key, JSON.stringify(notes));
   }
 
   updateNote(body) {
     let notes = this.state.notes;
-    let currentNote = this.state.selectedNote;
+    let currentNote = this.state.currentNote;
     currentNote.body = body;
-    this.setState({selectedNote: currentNote});
+    this.setState({savedNotes: currentNote});
+
+    // loop through the notes to find the index of it
+    let locationOfNote = notes.findIndex((index) => {
+      return index.id === currentNote.id;
+    });
+
+    // sets mde body to the selected note
+    notes[index].body = currentNote.body;
+
+    this.setState({notes: notes});
+
+    this.save(this.state.notes);
+
   }
 
 
@@ -61,8 +77,8 @@ class App extends Component {
       <div className="App container">
         <h1>Welcome to Notezy</h1>
         <div className="row">
-          <Sidebar />
-          <Editor />
+          <Sidebar add={this.addNote} select={this.selectNote} selected={this.currentNote} notes={this.state.notes} />
+          <Editor change={this.updateNote} currentNote={this.currentNote}  />
         </div>
       </div>
     );
