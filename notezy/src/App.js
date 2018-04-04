@@ -9,24 +9,25 @@ const uuidv1 = require('uuid/v1');
 class App extends Component {
   constructor(){
     super();
-    const indexKey = 'markdown';
+    const indexKey = "MARKDOWN"; 
     const savedNotes = JSON.parse(localStorage.getItem(indexKey));
 
     this.state = {
       notes: savedNotes ? savedNotes : [],
-      currentNote: ''
+      selectedNote: ''
     }
 
-    this.noteID = this.noteID.bind(this);
+    
     this.addNote = this.addNote.bind(this);
-    this.save = this.save.bind(this);
+    this.noteID = this.noteID.bind(this);
     this.selectNote = this.selectNote.bind(this);
     this.updateNote = this.updateNote.bind(this);
 
   }
 
   noteID() {
-    return uuidv1();
+    let theID = uuidv1();
+    return theID;
   }
 
   addNote() {
@@ -37,11 +38,14 @@ class App extends Component {
     newNote.push(note);
     this.setState({notes: newNote});
 
+    this.selectNote(note);
+    this.save(this.state.notes);
+
   }
 
   selectNote(note) {
-    if (note === this.state.currentNote) return;
-    this.setState({savedNotes: note});
+    if (note === this.state.selectedNote) return;
+    this.setState({selectedNote: note});
   }
 
   save(notes) {
@@ -49,15 +53,15 @@ class App extends Component {
     if (!notes) return;
 
     //else use key to parse notes to localStorage
-    const key = 'markdown';
+    const key = "MARKDOWN";
     localStorage.setItem(key, JSON.stringify(notes));
   }
 
   updateNote(body) {
     let notes = this.state.notes;
-    let currentNote = this.state.currentNote;
-    currentNote = body;
-    this.setState({savedNotes: currentNote});
+    let currentNote = this.state.selectedNote;
+    currentNote.body = body;
+    this.setState({selectedNote: currentNote});
 
     // loop through the notes to find the index of it
     let locationOfNote = notes.findIndex((index) => {
@@ -65,7 +69,7 @@ class App extends Component {
     });
 
     // sets mde body to the selected note
-    notes[locationOfNote] = currentNote;
+    notes[locationOfNote].body = currentNote.body;
 
     this.setState({notes: notes});
 
@@ -79,8 +83,8 @@ class App extends Component {
       <div className="App container">
         <h1>Welcome to Notezy</h1>
         <div className="row">
-          <Sidebar add={this.addNote} select={this.selectNote} selected={this.currentNote} notes={this.state.notes} />
-          <Editor change={this.updateNote} currentNote={this.currentNote}  />
+          <Sidebar add={this.addNote} select={this.selectNote} selected={this.state.selectedNote} notes={this.state.notes} />
+          <Editor change={this.updateNote} currentNote={this.state.selectedNote}  />
         </div>
       </div>
     );
