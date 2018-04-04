@@ -3,7 +3,7 @@ import 'milligram';
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
 
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require('uuid/v4');
 
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   noteID() {
-    let theID = uuidv1();
+    const theID = uuidv4();
     return theID;
   }
 
