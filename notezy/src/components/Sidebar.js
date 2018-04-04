@@ -6,7 +6,7 @@ class Sidebar extends Component {
     let noteList = [];
     this.props.notes.forEach((note) => {
       noteList.push(
-        <li key={note.id} onClick={() => this.props.select(note)} className={note.id === this.props.currentNote.id ? 'selected' : ''}>
+        <li key={note.id} onClick={() => this.props.selectNote(note)} className={note.id === this.props.currentNote.id ? 'selected' : ''}>
           { note.body }
         </li>
       );
