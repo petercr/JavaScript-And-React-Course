@@ -3,7 +3,7 @@ import 'milligram';
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
 
-const uuidv1 = require('uuid/v4');
+const uuidv4 = require('uuid/v4');
 
 
 class App extends Component {
