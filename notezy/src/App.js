@@ -83,7 +83,7 @@ class App extends Component {
       <div className="App container">
         <h1>Welcome to Notezy</h1>
         <div className="row">
-          <Sidebar add={this.addNote} select={this.selectNote} selected={this.state.selectedNote} notes={this.state.notes} />
+          <Sidebar add={this.addNote} select={this.updateNote} selected={this.state.selectedNote} notes={this.state.notes} />
             {this.state.notes.length > 0 ? <Editor change={this.updateNote}    currentNote={this.state.selectedNote}  /> : <div>Go ahead and add a note</div>}  
         </div>
       </div>
